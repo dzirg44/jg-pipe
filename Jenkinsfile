@@ -2,7 +2,7 @@
 
 pipeline {
     //agent { docker { image 'python:3.5.1' } }
-    agent { docker { image 'bitnami/git' } }
+    agent none
     stages {
 		stage('list') {
 			steps { 
@@ -16,6 +16,7 @@ pipeline {
 			}
 		}
         stage('build') {
+            agent { docker { image 'python:3.5.1' } }
             steps {
                 sh 'python --version'
             }
