@@ -1,14 +1,10 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent { docker { image 'alpine/git' } }
     stages {
 		stage('list') {
 			steps { 
-              script {
-                  def gitTag = sh(script: 'git tag --points-at HEAD | tail -1', returnStdout: true).trim()
-                 echo "gitTag: ${gitTag}"
-			}  
                sh 'print git version'
                sh 'git --version'
 			}
