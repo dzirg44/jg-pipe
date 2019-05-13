@@ -14,8 +14,7 @@ pipeline {
 		}
 		stage('version') {
 			steps {
-               tags = getTags()
-               sh "tAAAGs ${tags}"
+               sh "git tag --sort version:refname | tail -1"
 			}
 		}
         stage('build') {
