@@ -3,6 +3,13 @@
 pipeline {
     agent { docker { image 'python:3.5.1' } }
     stages {
+		stage('list') {
+			steps {
+               sh 'echo "versions - list"'
+			}
+		}
+ 
+    stages {
 		stage('version') {
 			steps {
                getTags()
