@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent { docker { image 'alpine/git' } }
+    agent { docker { image 'python:3.5.1' } }
     stages {
 		stage('list') {
 			steps { 
