@@ -10,7 +10,7 @@ pipeline {
 		}
 		stage('version') {
 			steps {
-               echo getTags()
+               getTags()
 			}
 		}
         stage('build') {
@@ -24,6 +24,7 @@ pipeline {
 def getTags() {
     def gitTagOutput = sh(script: "git tag", returnStdout: true)
     def tags = gitTagOutput.split("\n").findAll{ it =~ /^\d+\.\d+\.\d+$/ }
+    echo "$tags"
     return tags
 }
 
