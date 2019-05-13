@@ -14,7 +14,7 @@ pipeline {
 		}
 		stage('version') {
 			steps {
-               sh 'git tag --sort version:refname | tail -1'
+               sh 'git tag --sort version:refname'
 			}
 		}
         stage('build') {
