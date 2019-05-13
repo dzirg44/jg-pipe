@@ -8,8 +8,6 @@ pipeline {
                sh 'echo "versions - list"'
 			}
 		}
- 
-    stages {
 		stage('version') {
 			steps {
                getTags()
