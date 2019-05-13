@@ -5,7 +5,7 @@ pipeline {
     stages {
 		stage('list') {
 			steps {
-               sh 'echo "versions - list"'
+               sh 'ls -la'
 			}
 		}
 		stage('version') {
