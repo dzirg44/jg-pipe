@@ -20,7 +20,7 @@ pipeline {
 		stage('version') {
             agent { docker { image 'python:3.5.1' } }
 			steps {
-               sh 'git tag --sort version:refname'
+               getTags()
 			}
 		}
         stage('build') {
