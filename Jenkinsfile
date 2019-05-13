@@ -21,9 +21,10 @@ pipeline {
             agent { docker { image 'python:3.5.1' } }
 		    steps {
               script {
-               env[MY_GIT_TAG] = getTags
+               MY_GIT_TAG = getTags()
               }
-               echo env.MY_GIT_TAG
+                
+               echo "${MY_GIT_TAG}"
 			 }
 		}
         stage('build') {
