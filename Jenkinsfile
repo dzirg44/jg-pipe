@@ -22,9 +22,12 @@ pipeline {
 		    steps {
               script {
                MY_GIT_TAG = getTags()
+               MY_NEXT_TAG = nextTag(MY_GIT_TAG, 'major')
+               
               }
                 
                echo "THIS iS MY TAG ${MY_GIT_TAG}"
+               echo "This is my next tag ${MY_NEXT_TAG}"
 			 }
 		}
         stage('build') {
@@ -46,7 +49,7 @@ def getTags() {
 }
 
 
-def call(version, semantic) {
+def nextTag(version, semantic) {
 
     echo "bumping up version: $version"
 
