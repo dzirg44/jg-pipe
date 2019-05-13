@@ -5,12 +5,14 @@ pipeline {
     agent none
     stages {
 		stage('list') {
+            agent any
 			steps { 
                sh 'print git version'
                sh 'git --version'
 			}
 		}
 		stage('version') {
+            agent any
 			steps {
                sh 'git tag --sort version:refname'
 			}
