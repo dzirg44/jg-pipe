@@ -24,7 +24,7 @@ pipeline {
                MY_GIT_TAG = getTags()
               }
                 
-               echo "${MY_GIT_TAG}"
+               echo "THIS iS MY TAG ${MY_GIT_TAG}"
 			 }
 		}
         stage('build') {
