@@ -11,7 +11,6 @@ pipeline {
 		stage('version') {
 			steps {
                echo getTags()
-               echo test
 			}
 		}
         stage('build') {
