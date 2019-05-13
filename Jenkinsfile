@@ -13,7 +13,7 @@ pipeline {
 		stage('list') {
             agent { docker { image 'python:3.5.1' } }
 			steps { 
-               sh 'print git version'
+               sh 'git version'
                sh 'git --version'
 			}
 		}
