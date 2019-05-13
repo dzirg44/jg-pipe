@@ -19,10 +19,10 @@ pipeline {
 		}
 		stage('version') {
             agent { docker { image 'python:3.5.1' } }
-            script {
-            env.MY_GIT_TAG = getTags
-            }
-			steps {
+		    steps {
+              script {
+               env.MY_GIT_TAG = getTags
+              }
                sh 'echo $MY_GIT_TAG'
 			}
 		}
