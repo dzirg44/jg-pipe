@@ -23,6 +23,7 @@ pipeline {
 
 def getTags() {
     def gitTagOutput = sh(script: "git tag", returnStdout: true)
+    echo "$gitTagOutput"
     def tags = gitTagOutput.split("\n").findAll{ it =~ /^\d+\.\d+\.\d+$/ }
     echo "$tags"
     return tags
