@@ -4,12 +4,12 @@ pipeline {
     //agent { docker { image 'python:3.5.1' } }
     agent none
     stages {
-        stage("Deploy to test?") {
-          agent none
-          steps {
-            input message: 'Deploy to test?'
-          }
-        }
+//        stage("Deploy to test?") {
+//          agent none
+//          steps {
+//            input message: 'Deploy to test?'
+//          }
+//        }
 		stage('list') {
             agent { docker { image 'python:3.5.1' } }
 			steps { 
@@ -18,6 +18,7 @@ pipeline {
 			}
 		}
 		stage('version') {
+            agent { docker { image 'python:3.5.1' } }
 			steps {
                sh 'git tag --sort version:refname'
 			}
