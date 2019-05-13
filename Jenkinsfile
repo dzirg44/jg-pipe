@@ -45,7 +45,7 @@ def getTags() {
     echo "TAG_OUT: $gitTagOutput"
     def tags = gitTagOutput.split("\n").findAll{ it =~ /^v?\d+\.\d+\.\d+$/ }
     echo "TAG_PARSE: $tags"
-    return tags
+    return gitTagOutput
 }
 
 
