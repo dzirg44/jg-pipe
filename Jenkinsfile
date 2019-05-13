@@ -8,8 +8,9 @@ pipeline {
               script {
                   def gitTag = sh(script: 'git tag --points-at HEAD | tail -1', returnStdout: true).trim()
                  echo "gitTag: ${gitTag}"
-			}
-               sh 'ls -la'
+			}  
+               sh 'print git version'
+               sh 'git --version'
 			}
 		}
 		stage('version') {
