@@ -14,7 +14,8 @@ pipeline {
 		}
 		stage('version') {
 			steps {
-               getTags()
+               tags = getTags()
+               sh "tAAAGs ${tags}"
 			}
 		}
         stage('build') {
