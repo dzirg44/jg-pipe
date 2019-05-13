@@ -10,7 +10,7 @@ pipeline {
 		}
 		stage('version') {
 			steps {
-               def test = getTags()
+               echo getTags()
                echo test
 			}
 		}
