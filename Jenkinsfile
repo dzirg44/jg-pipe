@@ -10,7 +10,8 @@ pipeline {
 		}
 		stage('version') {
 			steps {
-               getTags()
+               def test = getTags()
+               echo test
 			}
 		}
         stage('build') {
