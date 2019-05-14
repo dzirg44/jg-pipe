@@ -48,28 +48,33 @@ def getTags() {
     return gitTagOutput
 }
 
+def extractInts( String input ) {
+  a = input.findAll( /\d+/ )*.toInteger()
+  println a
+  return a
+}
 
 def nextTag(version, semantic) {
 
     echo "bumping up version: $version"
 
-    def parser = /(?<major>\d+).(?<minor>\d+).(?<revision>\d+)/
+    def parser = /(?<major>v\d+).(?<minor>\d+).(?<revision>\d+)/
     def match = version =~ parser
-    echo "1"
     match.matches()
-    echo "2"
     def (major, minor, revision) = ['major', 'minor', 'revision'].collect { match.group(it) }
-    echo "3"
     nextVersion = version
     if(semantic == "major") {
         echo "bumping up major version ${major}"
-        nextVersion = "${(major.toInteger() + 1)}" + "." + 0 + "." + 0
+        verDigits = extractInts(major)
+        nextVersion = "${(verDigits[0]  + 1)}" + "." + 0 + "." + 0
     } else if(semantic == "minor") {
         echo "bumping up minor version ${minor}"
-        nextVersion = "${major}" + "." + "${(minor.toInteger() + 1)}" + "." + 0
+        verDigits = extractInts(minor)
+        nextVersion = "${major}" + "." + "${(verDigits[0] + 1)}" + "." + 0
     } else {
         echo "bumping up revision version ${revision}"
-        nextVersion = "${major}" + "." + "${minor}" + "." + "${revision.toInteger() + 1}"
+        verDigits = extractInts(revision)
+        nextVersion = "${major}" + "." + "${minor}" + "." + "${(verDigits[0] + 1)}"
     }
 
     echo "next version is set to: $nextVersion"
