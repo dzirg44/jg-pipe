@@ -55,9 +55,11 @@ def nextTag(version, semantic) {
 
     def parser = /(?<major>\d+).(?<minor>\d+).(?<revision>\d+)/
     def match = version =~ parser
+    echo "1"
     match.matches()
+    echo "2"
     def (major, minor, revision) = ['major', 'minor', 'revision'].collect { match.group(it) }
-
+    echo "3"
     nextVersion = version
     if(semantic == "major") {
         echo "bumping up major version ${major}"
