@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def test = nextTag('v1.1.5', "minor")
+def test = nextTag('v1.1.5', "major")
 
 def getTags() {
     //def gitTagOutput = sh(script: "git tag", returnStdout: true)
@@ -20,7 +20,7 @@ def nextTag(version, semantic) {
 
     //echo "bumping up version: $version"
 
-    def parser = /(?<major>v\d+).(?<minor>\d+).(?<revision>\d+)/
+    def parser = /v?(?<major>\d+).(?<minor>\d+).(?<revision>\d+)/
     def match = version =~ parser
 //    println parser
     match.matches()
@@ -32,7 +32,7 @@ def nextTag(version, semantic) {
     if(semantic == "major") {
         println "bumping up major version ${major}"
         verDigits = extractInts(major)
-        nextVersion = "${(verDigits[0]  + 1)}" + "." + 0 + "." + 0
+        nextVersion = "${(major.toInteger()  + 1)}" + "." + 0 + "." + 0
     } else if(semantic == "minor") {
         println "bumping up minor version ${minor}"
         verDigits = extractInts(minor)
