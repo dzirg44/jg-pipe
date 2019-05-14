@@ -47,13 +47,13 @@ def getTags() {
     echo "TAG_PARSE: $tags"
     return gitTagOutput
 }
-
+/*
 def extractInts( String input ) {
   a = input.findAll( /\d+/ )*.toInteger()
   println a
   return a
 }
-
+*/
 def nextTag(version, semantic) {
 
     echo "bumping up version: $version"
