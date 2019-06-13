@@ -3,6 +3,9 @@
 pipeline {
     //agent { docker { image 'python:3.5.1' } }
     agent none
+    environment {
+        ENV_NAME = "${env.BRANCH_NAME == "develop" ? "staging" : "production"}"
+    }
     stages {
 //        stage("Deploy to test?") {
 //          agent none
@@ -27,6 +30,7 @@ pipeline {
               }
                 
                echo "THIS iS MY TAG ${MY_GIT_TAG}"
+               echo "THIS iS MY BRANCH ${ENV_NAME}"
                echo "This is my next tag ${MY_NEXT_TAG}"
 			 }
 		}
